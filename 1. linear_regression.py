@@ -5,6 +5,14 @@ import torch.optim as optim
 
 #랜덤 시드
 torch.manual_seed(1)
+
+
+
+# 선형 회귀
+# 가설: h = wx+b
+# 비용 함수 : loss = mean((h-y) **2) 
+
+
 ##### 데이터 셋 ##########
 # 공부 시간 |  성적
 #   1      |   20

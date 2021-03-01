@@ -26,10 +26,10 @@ dataloader = DataLoader(dataset, batch_size=2, shuffle=True)
 
 #차원은 열의 개수 
 
-i_dim = 3
-o_dim = 1
+xdim = 3
+ydim = 1
 
-w1 = torch.randn(i_dim,o_dim)
+w1 = torch.randn(xdim,ydim)
 
 epochs =100
 learning_rate = 1e-6

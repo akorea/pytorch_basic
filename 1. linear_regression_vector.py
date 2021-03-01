@@ -11,6 +11,11 @@ torch.manual_seed(1)
 #   2      |   40
 #   3      |   60
 
+# 선형 회귀
+# 가설: h = wx+b
+# 비용 함수 : loss = mean((h-y) **2) 
+
+
 
 x_train = torch.FloatTensor([1, 2, 3])
 y_train = torch.FloatTensor([20,40,60])
