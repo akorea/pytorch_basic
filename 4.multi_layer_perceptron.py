@@ -62,5 +62,5 @@ y_pred = h_relu.mm(w2)
 # 3. hdim 사이즈 늘리기 
 #   1) 4 일 경우 loss : 0.0008823976386338472  
 #   2) 100일 경우 loss : 1.5570549294352531e-09
-# 4. learning_rate 작게 할 수록 정답에 가까워 질 확률이 높아짐 (ecoch를 늘려야 함)
+# 4. learning_rate 작게 할 수록 정답에 가까워 질 확률이 높아짐 (epoch를 늘려야 함)
 print(f'{x_train[1]} 의 실제값 : {y_train[1]} 예측값: {y_pred[1]}')

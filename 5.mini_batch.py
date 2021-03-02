@@ -44,7 +44,7 @@ for i in range(epochs+1):
         if i % 10 ==0:
             print(f'epoch: {i}/{epochs} batch_id:{batch_idx+1} loss = {loss} ')
 
-        # 손실에 따른 w1, w2의 변화도를 계산하고 역전파함
+        # 손실에 따른 w1 의 변화도를 계산하고 역전파함
         grad_y_pred = 2.0 * (y_pred - y_train)
         grad_w1 = x_train.T.mm(grad_y_pred)
         
@@ -56,11 +56,4 @@ for i in range(epochs+1):
 y_pred = x.mm(w1)
 
 
-## 예측값을 높이기 위해서는
-# 1. torch.manual_seed 설정함 -> w1, w2 의 매개변수 초기값에 따라 성능이 차이가 많음
-# 2. epoch 늘리기
-# 3. h_dim 사이즈 늘리기 
-#   1) 4 일 경우 loss : 0.0008823976386338472  
-#   2) 100일 경우 loss : 1.5570549294352531e-09
-# 4. learning_rate 작게 할 수록 정답에 가까워 질 확률이 높아짐 (ecoch를 늘려야 함)
 print(f'{x[1]} 의 실제값 : {y[1]} 예측값: {y_pred[1]}')

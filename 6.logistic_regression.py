@@ -4,21 +4,24 @@ import torch.nn.functional as F
 import torch.optim as optim
 
 
-# 이진 분류
+# 이진 분류 모델, 미분 함수 직접 구현
 # 가설: h = 1 /(1+ exp-(wx+b)) = sigmoid(wx+b) 
 # 비용 함수 : loss = -(y * log(h) + (1 - y) * log(1 - h)).mean()
 # 역전파를 위한 미분
-#  1) h* log(y) 미분= h/y 
-#     h * log(y) + (1-h) * log(1-y)  미분 = h/y - (h-1)/(y-1) = (y-h)/y(y-1)
+#  1) y* log(h) 미분= y/h 
+#     y * log(h) + (1-y) * log(1-h)  미분 = y/h - (y-1)/(h-1) = (h-y)/h(h-1)
 #  2) sigmoid(x)의 미분 = sigmoid(x) (1-sigmoid(x))
 # https://ko.numberempire.com/derivativecalculator.php 미분 계산기 참고
-#   X       Y
-# 1,  2     0 
-# 2,  3     0 
-# 3,  1     0 
-# 4,  3     1 
-# 5,  3     1 
-# 6,  2     1 
+
+#   데이터 셋
+#   X    |   Y
+#---------------
+# 1,  2  |   0 
+# 2,  3  |   0 
+# 3,  1  |   0 
+# 4,  3  |   1 
+# 5,  3  |   1 
+# 6,  2  |   1  
 
 torch.manual_seed(1)
 x_data = [[1, 2], [2, 3], [3, 1], [4, 3], [5, 3], [6, 2]]
