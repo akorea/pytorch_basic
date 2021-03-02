@@ -26,9 +26,9 @@ for i in range(epochs+1):
         print(f'{i}/{epochs} W={W.squeeze().detach()} loss = {loss.item()}')
 
     #역전파 : 피분
-    grad_y_pred = 2.0 * (y_pred-y_train)     #(y_pred-y_train)**2  y_pred 로 미분
-    grad_W = x_train.T.mm(grad_y_pred)      # x_train * w + b 를 w 로 편미분 ->  W.T * y_pred
-    grad_b = grad_y_pred.mean()               # x_train * w + b 를 b 로 편미분 ->  y_pred * 1
+    grad_y_pred = 2.0 * (y_pred-y_train)     #(y_pred-y)**2  y_pred 로 미분
+    grad_W = x_train.T.mm(grad_y_pred)       # x * w + b 를 w 로 편미분 ->  x.T * grad_y_pred
+    grad_b = grad_y_pred.mean()              # x * w + b 를 b 로 편미분 ->  grad_y_pred * 1
 
     # 매개변수 업데이트
     # w 에 require_grad 있는 경우  W-= learning_rate * grad_W 수행되지 않음

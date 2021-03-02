@@ -28,8 +28,8 @@ for i in range(epochs+1):
 
     #역전파
     grad_y_pred = 2.0 * (y_pred-y_train)     # (y_pred-y_train)**2  y_pred 로 미분
-    grad_w = (grad_y_pred * x_train).mean()  # x_train * w + b 를 w 로 미분 -> y_pred * x
-    grad_b = grad_y_pred.mean()             # x_train * w + b 를 b 로 편미분 ->  y_pred * 1
+    grad_w = (grad_y_pred * x_train).mean()  # x * w + b 를 w 로 미분 -> grad_y_pred * x
+    grad_b = grad_y_pred.mean()              # x * w + b 를 b 로 편미분 ->  grad_y_pred * 1
  
     # 매개변수 업데이트
     w -= learning_rate * grad_w
