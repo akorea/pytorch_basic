@@ -24,25 +24,36 @@ print(f"a/b.unsqueeze(-1)={c}")
 
 print(f"b.unsqueeze(0) {b.unsqueeze(0)}")
 
-print(a[0]) #a[0] = a[0,:]
-print(a[0,:])
-print(a.T[0]) #a.T[0] = a[:,0]
-print(a[:,0])
-
 a = torch.tensor([[1, 2], [3, 4.]])
 b = torch.tensor([[2, 1]])
 
 c= a/b.T
 print(f"a/b.T={c}")
+# tensor([[0.5000, 1.0000],
+#         [3.0000, 4.0000]])
+
 
 a = torch.tensor([[1, 2], [3, 4.]])
 b = torch.tensor([2, 1])
 
 c= a/b.T
 print(f"a/b.T={c}")
-
+# 위 코드와 차이가 발생하는 이유는?
+# unsqueeze 함수의 필요성이 여기서 발생
+#
 # tensor([[0.5000, 2.0000],
 #         [1.5000, 4.0000]])
+
+
+############################################
+# 전치 행렬
+############################################
+
+a = torch.tensor([[1, 2], [3, 4.]])
+print(a[0]) #a[0] = a[0,:]
+print(a[0,:])
+print(a.T[0]) #a.T[0] = a[:,0]
+print(a[:,0])
 
 ############################################
 # Tensor 합
