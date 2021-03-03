@@ -2,9 +2,10 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
+import math
 
-
-# 다중 분류
+# 다중 분류 : loss 함수, 미분 함수, 아담 옵티미이져 구현 
+#            -> 아담을 사용하면, learning rate 를 조금 증가시켜도 loss 값이 발산하지 않음 
 # 가설: h = exp(wx+b)/sum(exp(wx+b)) =softmax(wx+b)
 # 비용 함수 : F.cross_entropy= The negative log likelihood loss(F.nll_loss) + log softmax (F.log_softmax) 
 #            loss = (y_one_hot * -log(h)).sum().mean()
@@ -72,6 +73,43 @@ y_train = torch.LongTensor(y_data)
 
 w = torch.randn((4,3))
 b= torch.randn(3)
+pm ={}
+
+#파이썬 날코딩으로 알고짜는 딥러닝 코드 
+#https://github.com/KONANtechnology/Academy.ALZZA 
+#https://d2l.ai/chapter_optimization/adam.html
+
+def adam_update(pm, key, delta):
+    beta1 = 0.9
+    beta2 = 0.999
+    epsilon = 1.0e-8
+
+    #v : EMA of gradient squares
+    #m:  momentum
+    mkey, vkey, step = 'm' + key, 'v' + key, 'n' + key
+    if key == 'w' : 
+        size = w.shape
+    else:
+        size = b.shape 
+
+    if mkey not in pm:
+        pm[mkey] = torch.zeros(size)
+        pm[vkey] = torch.zeros(size)
+        pm[step] = 0
+    
+    
+    #update biased first moment estimate
+    m = pm[mkey] = beta1 * pm[mkey] + (1 - beta1) * delta
+    #Update biased second raw moment estimate
+    v = pm[vkey] = beta2 * pm[vkey] + (1 - beta2) * (delta * delta)  
+    
+    pm[step] += 1
+    #Compute bias-corrected first moment estimate
+    m = m / (1 - math.pow(beta1, pm[step]))
+    #Compute bias-corrected second raw moment estimate 
+    v = v / (1 - math.pow(beta2, pm[step])) 
+    
+    return m / (torch.sqrt(v)+epsilon)
 
 
 
@@ -79,8 +117,8 @@ dim = (5,3)
 # ytrain [2,2,1,0,0] -> [[0,0,1],[0,0,1],[0,1,0],[1,0,0],[0,1,0]] 로 변경
 y_one_hot = one_hot_vector(y_train, dim)
 
-epochs = 1000
-learning_rate = 1e-3
+epochs = 10000
+learning_rate = 0.01
 
 
 for i in range(epochs+1):
@@ -117,14 +155,14 @@ for i in range(epochs+1):
 
 
     #4.파라미터 업데이트
-    w -= learning_rate * grad_w
-    b -= learning_rate * grad_b
+    w -= learning_rate * adam_update(pm,'w',grad_w)
+    b -= learning_rate * adam_update(pm,'b',grad_b)
 
 
 z= x_train.mm(w) +b
 y_pred = torch.argmax(softmax(z),dim=1)
 
 #예측값은 맞으나 Loss 가 큼
-#현재 loss= 0.6558817625045776 -> epoch 를 늘리면 0.55 까지 줄일 수 있음
-# learning_rate 를 늘리면 loss가 발산하여, 값을 늘릴 수 없음 
+#현재 loss= 0.5515404939651489,-> epoch 를 늘리면 0.55 까지 줄일 수 있음
+# Adam 옵티마이져를 사용하면 , learning_rate 를 늘려도 loss 값이 발산하지 않음 
 print(f'{x_train[1]} 의 실제값 : {y_train[1]} 예측값: {y_pred[1]}')
