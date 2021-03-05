@@ -62,14 +62,14 @@ mnist_test = dsets.MNIST(root='MNIST_data/',train=False,\
                         transform=transforms.ToTensor(),\
                         download=True)
 ###train 데이터 
-# cpu 에서 돌리기 위해 데이터 수를 줄임
+# cpu 에서 돌리기 위해 데이터 크기 줄임
 # mnist_train.data.shape : 60000 -> 10000 개, 28 가로 ,28 세로
 n_train = 10000
 mnist_train.data = mnist_train.data[:n_train]
 mnist_train.targets = mnist_train.targets[:n_train]
 
 ###test 데이터 
-# cpu 에서 돌리기 위해 데이터 수를 줄임
+# cpu 에서 돌리기 위해 데이터 크기 줄임
 # mnist_train.data.shape : 10000 -> 200 개, 28 가로 ,28 세로
 n_test = 200
 mnist_test.data = mnist_test.data[:n_test]
@@ -97,7 +97,7 @@ test_iter = torch.utils.data.DataLoader(mnist_test,\
           
 
 ###########################################
-# 3. 학습 준비
+# 2. 학습 준비
 # 1) parameter 정의
 # 2) 모델 불러오기
 # 3) 비용 함수 지정
