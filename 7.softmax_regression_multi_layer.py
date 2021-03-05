@@ -4,7 +4,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 
 
-# 선택 분류
+# 선택 분류 
 # 가설: h = exp(wx+b)/sum(exp(wx+b))
 # 비용 함수 : loss = (y_one_hot * -log(h)).sum().mean()
 # 역전파를 위한 미분 : 1-h
@@ -25,6 +25,7 @@ import torch.optim as optim
 #6.7        |9          |5.2        | 2.3       |   |   1       |    0      |   0       | -> 0
 #5.6        |2.8        |4.9        | 2         |   |   1       |    0      |   0       | -> 0
 			
+
 torch.manual_seed(1)
 
 
@@ -40,49 +41,54 @@ xdim = x_train.shape[1]
 ydim = len(set(y_data))
 
 
-class SoftmaxClass(nn.Module):
-    def __init__(self,xdim, ydim):
+class SoftmaxClass():
+    def __init__(self,xdim, hdim, ydim):
         super().__init__()
-        self.linear = nn.Linear(xdim, ydim)
+        self.lin1 = self.linear(xdim, hdim)
+        self.lin2 = self.linear(hdim, ydim)
 
+    def linear(idim,odim):
+        return linear_func
     def forward(self, x):
-        return self.linear(x)
+        net= self.lin1(x)
+        net = self.sigmoid(net)
+        net = self.lin2(net)
+        net = self.softmax(net)
+        return net
+    
+    def backward():
+        print('backward')
+    
+    def optimizer():
+        print('optimizer')
+
+if __name__ == '__main__':
+
+    # ytrain [2,2,1,0,0] -> [[0,0,1],[0,0,1],[0,1,0],[1,0,0],[0,1,0]] 로 변경
+    y_one_hot = one_hot_vector(y_train, hot_dim)
+
+    model = SoftmaxClass(xdim, ydim)
 
 
-model = SoftmaxClass(xdim, ydim)
-# opt 설정
-opt = optim.SGD(model.parameters(), lr=0.1)
+    epochs = 1000
+    for i in range(epochs + 1):
+        # 1. 가설 계산  ----> 모델 계산
+        y_pred = model.forward(x_train)
+        # 2. 비용함수 계산
+        loss = model.loss(y_pred, y_train)
 
-epochs = 1000
-for i in range(epochs + 1):
-    # 1. 가설 계산  ----> 모델 계산
-    y_pred = model(x_train)
-    # 2. 비용함수 계산
-    loss = F.cross_entropy(y_pred, y_train)
+        # 3. 비용함수 역전파
+        delta= model.backward()
+        # 4. 옵티마이저로 매개변수 갱신
 
-    # 3. 미분값 초기화    
-    opt.zero_grad()
-    # 4. 비용함수 역전파
-    loss.backward()
-    # 5. 옵티마이저로 매개변수 갱신
-    opt.step()
+        model.optimizer(delta)
 
-    if i % 100 == 0:
-        print(f'Epoch :{i}/{epochs}  loss:{loss.item()}')
+        if i % 100 == 0:
+            print(f'Epoch :{i}/{epochs}  loss:{loss.item()}')
 
 
-y_pred = model(x_train)
+    y_pred = model.forward(x_train)
 
-prediction = torch.argmax(y_pred[1])
+    prediction = torch.argmax(y_pred[1])
 
-print(f' {x_train[1]} 의 실제값 : {y_train[1]} 예측값: { prediction} ')
-
-#파라미터 출력
-with torch.no_grad():
-    n_param = 0
-    for p_idx,(param_name,param) in enumerate(model.named_parameters()):
-        param_data = param.detach().cpu()
-        n_param += len(param_data.reshape(-1))
-        print ("[%d] name:[%s] shape:[%s]."%(p_idx,param_name,param_data.shape))
-        print ("    val:%s"%(param_data.reshape(-1)))
-    print ("Total number of parameters:[%s]."%(format(n_param,',d')))
+    print(f' {x_train[1]} 의 실제값 : {y_train[1]} 예측값: { prediction} ')
