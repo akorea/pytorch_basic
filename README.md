@@ -51,8 +51,8 @@ Pytorch 를 이용하여 기본 모델을 구현한 프로젝트로 CPU 환경�
   * 소스 코드
     | 파일           |  설명           |
     | ---------------|:----------------------- |
-    | 4.multi_layer_perceptron.py | MLP를 레이어, 비용함수, 역전파 기능 구현   |
-    | 4.multi_layer_perceptron_class.py    |  MLP를 파이토치 내장 함수를 사용하여 클래스로 구현    |
+    | 4.multi_layer_perceptron.py | MLP를 비용함수, 역전파 기능 구현   |
+    | 4.multi_layer_perceptron_class.py    |  MLP를 파이토치 내장 함수로 구현    |
 ## 5. 미니배치
 * 소스 코드
     | 파일           |  설명           |
@@ -64,16 +64,16 @@ Pytorch 를 이용하여 기본 모델을 구현한 프로젝트로 CPU 환경�
     | ---------------|:----------------------- |
     | 6.logistic_regression.py | 이진 분류의 비용 함수, 역전파 기능 구현   |
     | 6.logistic_regression_multi_layer.py | 이진 분류의 다층 레이어 모델 비용 함수, 역전파 기능 구현    |
-    | 6.logistic_regression_multi_layer_class.py | 이전 분류를 파이토치 내장 함수를 사용하여 클래스로 구현      |
+    | 6.logistic_regression_multi_layer_class.py | 이전 분류를 파이토치 내장 함수로 구현      |
 ## 7. 선택 분류
 * 소스 코드
     | 파일           |  설명           |
     | ---------------|:----------------------- |
     | 7.softmax_data.xlsx | 선택 분류 데이터셋을 시각화한 엑셀 문서   |
     | 7.softmax_regression.py | 선택분류의  비용 함수, 역전파 기능 구현    |
-    |  7.softmax_regression_adam.py | 선택 분류의 비용함수, 역전파, 아담 옵티마이저 긴으 구현   |
-    |  7.softmax_regression_class.py |  선택 분류를 파이토치 내장 함수를 사용하여 클래스로 구현   |
-    |  7.softmax_regression_multi_layer.py | 선택 분류 다층 레이어 모델을 파이토치 내장 함수를 사용하여 클래스로 구현  |
+    |  7.softmax_regression_adam.py | 선택 분류의 비용함수, 역전파, 아담 옵티마이저 기능 구현   |
+    |  7.softmax_regression_class.py |  선택 분류를 파이토치 내장 함수로 구현   |
+    |  7.softmax_regression_multi_layer.py | 선택 분류 다층 레이어 모델을 파이토치 내장 함수로 구현  |
 ## 8. 데이터 셋
 * 소스 코드
     | 파일           |  설명           |
