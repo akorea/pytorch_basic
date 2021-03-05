@@ -1,13 +1,14 @@
 # Pytorch 기초 
 
-Pytorch 를 이용하여 기본 모델을 구현한 프로젝트 
-* GPU 없이 테스트 가능함
-* 개발 환경
-* python 
-* pytorch
-* matplotlib
-* pandas
+Pytorch 를 이용하여 기본 모델을 구현한 프로젝트로 CPU 환경에서 프로그램을 실행할 수 있습니다. 이 문서는 계속 업데이트 할 예정입니다.
 
+* 개발 환경
+* python : 3.8.5
+* torch  : 1.8.0
+* matplotlib 3.3.2
+* pandas : 1.2.2 
+* torchvision : 0.9.0
+* 
 ## 0. 기초 코드
 * 텐서 기본 조작법을 모아둔 소스 코드
 * 소스 코드
@@ -33,27 +34,57 @@ Pytorch 를 이용하여 기본 모델을 구현한 프로젝트
     | linear_regression.py     |  학습시간, 점수의 데이터가 행렬로 구성   |
     | linear_regression_vector.py     |  학습시간, 점수의 데이터가 벡터로 구성     |
 
-## 2. 다중 선형 회귀 
+## 2.다중 선형 회귀 
   * 소스 코드
     | 파일           |  설명           |
     | ---------------|:----------------------- |
-    | 2.multi_linear_regression.py     |  학습시간, 과외시간, 학원 시간을 과 점수를 핼열로 구성   |
+    | 2.multi_linear_regression.py     |  학습시간, 과외시간, 학원 시간을 과 점수를 행열로 구성   |
 
 ## 3. 역전파 미분 함수 
   * 소스 코드
     | 파일           |  설명           |
     | ---------------|:----------------------- |
-    | 3.grad_matrix.py |     |
-    | 3.grad_vector.py    |     |
+    | 3.grad_matrix.py | 역전파 행렬 미분 기능 구현  |
+    | 3.grad_vector.py    | 역전파 벡터 미분 기능 구현   |
 
 ## 4. 다층 퍼셉트론 (MLP) 
-
+  * 소스 코드
+    | 파일           |  설명           |
+    | ---------------|:----------------------- |
+    | 4.multi_layer_perceptron.py | MLP를 레이어, 비용함수, 역전파 기능 구현   |
+    | 4.multi_layer_perceptron_class.py    |  MLP를 파이토치 내장 함수를 사용하여 클래스로 구현    |
 ## 5. 미니배치
-
+* 소스 코드
+    | 파일           |  설명           |
+    | ---------------|:----------------------- |
+    | 5.mini_batch.py | DataLoader를 이용하여 데이터를 미니 배치 단위로 나눠서 데이터 학습 시킴   |
 ## 6. 이진 분류
-
-## 7. 다중 클래스 분류
-
+* 소스 코드
+    | 파일           |  설명           |
+    | ---------------|:----------------------- |
+    | 6.logistic_regression.py | 이진 분류의 비용 함수, 역전파 기능 구현   |
+    | 6.logistic_regression_multi_layer.py | 이진 분류의 다층 레이어 모델 비용 함수, 역전파 기능 구현    |
+    | 6.logistic_regression_multi_layer_class.py | 이전 분류를 파이토치 내장 함수를 사용하여 클래스로 구현      |
+## 7. 선택 분류
+* 소스 코드
+    | 파일           |  설명           |
+    | ---------------|:----------------------- |
+    | 7.softmax_data.xlsx | 선택 분류 데이터셋을 시각화한 엑셀 문서   |
+    | 7.softmax_regression.py | 선택분류의  비용 함수, 역전파 기능 구현    |
+    |  7.softmax_regression_adam.py | 선택 분류의 비용함수, 역전파, 아담 옵티마이저 긴으 구현   |
+    |  7.softmax_regression_class.py |  선택 분류를 파이토치 내장 함수를 사용하여 클래스로 구현   |
+    |  7.softmax_regression_multi_layer.py | 선택 분류 다층 레이어 모델을 파이토치 내장 함수를 사용하여 클래스로 구현  |
 ## 8. 데이터 셋
-
+* 소스 코드
+    | 파일           |  설명           |
+    | ---------------|:----------------------- |
+    | 8.mnist_dataset.py | Mnist 데이터 셋 선택 분류를 CPU 환경에서 실행 할 수 있도록 수정(정확도는 조금 떨어짐) |
 ## 9. 시각화
+* TBD
+## 10. 다층 퍼셉트론 클래스 구현
+* TBD
+
+## 참고 자료 
+파이썬 날코딩으로 알고짜는 딥러닝 https://github.com/KONANtechnology/Academy.ALZZA
+
+Pytorch 로 시작하는 딥러닝 입문 https://wikidocs.net/55580
