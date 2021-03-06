@@ -4,7 +4,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 import math
 
-# 선택 분류 : loss 함수, 미분 함수, 아담 옵티미이져 구현 
+# 선택 분류 : loss 함수, 미분 함수, 아담 옵티마이저 구현 
 #            -> 아담을 사용하면, learning rate 를 조금 증가시켜도 loss 값이 발산하지 않음 
 # 가설: h = exp(wx+b)/sum(exp(wx+b)) =softmax(wx+b)
 # 비용 함수 : F.cross_entropy= The negative log likelihood loss(F.nll_loss) + log softmax (F.log_softmax) 
@@ -173,5 +173,5 @@ if __name__ == '__main__':
 
     #예측값은 맞으나 Loss 가 큼
     #현재 loss= 0.5515404939651489,-> epoch 를 늘리면 0.55 까지 줄일 수 있음
-    # Adam 옵티마이져를 사용하면 , learning_rate 를 늘려도 loss 값이 발산하지 않음 
+    # Adam 옵티마이저를 사용하면 , learning_rate 를 늘려도 loss 값이 발산하지 않음 
     print(f'{x_train[1]} 의 실제값 : {y_train[1]} 예측값: {y_pred[1]}')

@@ -43,7 +43,7 @@ print(y_pred)
 loss = torch.mean((y_pred-y_train)**2)
 print(loss)
 
-#옵티마이져 정의 옵티마이져(매개변수)
+#옵티마이저 정의 옵티마이저(매개변수)
 optimizer =optim.Adam([W,b],lr=0.01)
 
 epochs = 8000 # 반복

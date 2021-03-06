@@ -101,7 +101,7 @@ test_iter = torch.utils.data.DataLoader(mnist_test,\
 # 1) parameter 정의
 # 2) 모델 불러오기
 # 3) 비용 함수 지정
-# 4) 옵티마이져 지정
+# 4) 옵티마이저 지정
 ###########################################
 
 #1) parameter 정의
@@ -112,11 +112,11 @@ ydim = 10
 learning_rate = 0.1
 epochs = 200
 
-#3) 모델 불러오기
+#2) 모델 불러오기
 model = MLPModel('mlp', xdim, hdim, ydim).to(device)
-#4) 비용 함수 지정
+#3) 비용 함수 지정
 loss_func = nn.CrossEntropyLoss().to(device)
-#5) 옵티마이져 지정
+#4) 옵티마이저 지정
 opt = optim.Adam(model.parameters(),lr=learning_rate)
 
 ###########################################
@@ -124,7 +124,7 @@ opt = optim.Adam(model.parameters(),lr=learning_rate)
 # 1) 학습 반복
 # 2) 모델 학습
 # 3) 역전파 실행
-# 4) 옵티마이져 실행
+# 4) 옵티마이저 실행
 # 5) 평가
 ###########################################
 
@@ -140,7 +140,7 @@ for i in range(epochs+1):
         opt.zero_grad()
         loss_out = loss_func(y_pred, y.to(device))
         loss_out.backward()
-        # 4) 옵티마이져
+        # 4) 옵티마이저
         opt.step()
         # 5) 평가
         loss_val_avg += loss_out/len(train_iter)
