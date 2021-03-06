@@ -81,7 +81,8 @@ def softmax_derivative(x):
     return torch.diagflat(s) - torch.mm(s, s.T)
 
 
-
+#논문 Variational inference & deep learning
+#https://dare.uva.nl/search?identifier=8e55e07f-e4be-458f-a929-2f9bc2d169e8
 #파이썬 날코딩으로 알고짜는 딥러닝 코드 
 #https://github.com/KONANtechnology/Academy.ALZZA 
 #https://d2l.ai/chapter_optimization/adam.html
