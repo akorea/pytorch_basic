@@ -22,7 +22,6 @@ print(f"a/b.unsqueeze(-1)={c}")
 # tensor([[0.5000, 1.0000],
 #         [3.0000, 4.0000]])
 
-print(f"b.unsqueeze(0) {b.unsqueeze(0)}")
 
 a = torch.tensor([[1, 2], [3, 4.]])
 b = torch.tensor([[2, 1]])

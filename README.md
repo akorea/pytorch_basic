@@ -31,7 +31,7 @@ Pytorch 를 이용하여 기본 모델을 구현한 프로젝트로 CPU 환경�
 * 소스 코드
     | 파일           |  설명           |
     | ---------------|:----------------------- |
-    | [1.linear_regression.py](./1.linear_regression.py)|  학습시간, 점수의 데이터가 행렬로 구성   |
+    | [1.linear_regression.py](./1.linear_regreesion.py) |  학습시간, 점수의 데이터가 행렬로 구성   |
     | [1.linear_regression_vector.py](./1.linear_regression_vector.py)|  학습시간, 점수의 데이터가 벡터로 구성     |
 
 ## 2.다중 선형 회귀 
@@ -78,7 +78,7 @@ Pytorch 를 이용하여 기본 모델을 구현한 프로젝트로 CPU 환경�
 * 소스 코드
     | 파일           |  설명           |
     | ---------------|:----------------------- |
-    | [8.mnist_dataset.py](./8.mnist_dataset.py) | 선택 분류로 Mnist 이미지 분류하기 (CPU 환경에서 실행할 수 있도록 테스트 데이터 일부만 사용하여 모델 정확도는 떨어짐) |
+    | [8.mnist_dataset.py](./8.mnist_dataset.py) | 선택 분류로 Mnist 이미지 분류하기 (CPU 환경에서 실행할 수 있도록 테스트 데이터 일부만 사용) |
 ## 9. 시각화
 * TBD
 
