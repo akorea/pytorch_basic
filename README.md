@@ -78,12 +78,14 @@ Pytorch 를 이용하여 기본 모델을 구현한 프로젝트로 CPU 환경�
 * 소스 코드
     | 파일           |  설명           |
     | ---------------|:----------------------- |
-    | [8.mnist_dataset.py](./8.mnist_dataset.py) | 선택 분류로 Mnist 이미지 분류하기 (CPU 환경에서 실행할 수 있도록 데이터의 일부만 사용하여 정확도는 조금 떨어짐) |
+    | [8.mnist_dataset.py](./8.mnist_dataset.py) | 선택 분류로 Mnist 이미지 분류하기 (CPU 환경에서 실행할 수 있도록 테스트 데이터 일부만 사용하여 모델 정확도는 떨어짐) |
 ## 9. 시각화
 * TBD
 
 
 ## 참고 자료 
+Pytorch Tutorial https://github.com/pytorch/tutorials
+
 파이썬 날코딩으로 알고짜는 딥러닝 https://github.com/KONANtechnology/Academy.ALZZA
 
 Pytorch 로 시작하는 딥러닝 입문 https://wikidocs.net/55580
