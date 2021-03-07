@@ -174,9 +174,9 @@ print(classes)
 trainloader = DataLoader(trainset, batch_size=16, shuffle=True)
 testloader = DataLoader(testsest, batch_size=16, shuffle=True)
 
-# dataiter= iter(trainloader)
-# images, lables = dataiter.next()
-# print(lables)
+dataiter= iter(trainloader)
+images, lables = dataiter.next()
+print(lables)
 
 ## 이미지 보여주기
 fig, axes = plt.subplots(figsize=(10,4), ncols=4)
