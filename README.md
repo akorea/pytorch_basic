@@ -83,7 +83,7 @@ Pytorch 를 이용하여 기본 모델을 구현한 프로젝트로 CPU 환경�
     | 파일           |  설명           |
     | ---------------|:----------------------- |
     | [8.mnist_dataset.py](./8.mnist_dataset.py) | 선택 분류로 Mnist 이미지 분류하기 (CPU 환경에서 실행할 수 있도록 테스트 데이터 일부만 사용) |
-    | [8.notmnist_dataset.py](./8.notmnist_dataset.py) | http://yaroslavvb.com/upload/notMNIST/notMNIST_small.tar.gz  폴더의 notMNIST 파일을 다운로드 하여 train, test 데이터로 분류하고 dataloader 만들기(학습전 단계) |
+    | [8.notmnist_dataset.py](./8.notmnist_dataset.py) | http://yaroslavvb.com/upload/notMNIST/notMNIST_small.tar.gz   notMNIST 파일을 다운로드 하여 train, test 데이터로 분류하고 dataloader 만들기(학습전 단계) |
 ## 9. 시각화
 * TBD
 
